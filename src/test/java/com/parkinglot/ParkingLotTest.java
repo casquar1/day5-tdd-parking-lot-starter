@@ -1,5 +1,6 @@
 package com.parkinglot;
 
+import com.parkinglot.exception.UnrecognizedTicketException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -60,10 +61,12 @@ public class ParkingLotTest {
         ParkingTicket wrongParkingTicket = new ParkingTicket();
 
         //when
-            Car car = parkingLot.fetch(wrongParkingTicket);
+        UnrecognizedTicketException unrecognizedTicketException = assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingLot.fetch(wrongParkingTicket);
+        });
 
         //then
-        assertNull(car);
+        assertEquals("Unrecognized parking ticket.", unrecognizedTicketException.getMessage());
     }
 
     @Test
@@ -75,10 +78,12 @@ public class ParkingLotTest {
         parkingLot.fetch(parkingTicket);
 
         //when
-        Car fetchCar = parkingLot.fetch(parkingTicket);
+        UnrecognizedTicketException unrecognizedTicketException = assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingLot.fetch(parkingTicket);
+        });
 
         //then
-        assertNull(fetchCar);
+        assertEquals("Unrecognized parking ticket.", unrecognizedTicketException.getMessage());
     }
 
     @Test
