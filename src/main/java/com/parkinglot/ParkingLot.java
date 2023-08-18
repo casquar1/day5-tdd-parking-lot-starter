@@ -7,4 +7,8 @@ public class ParkingLot {
         this.car = car;
         return new ParkingTicket();
     }
+
+    public Car fetch(ParkingTicket parkingTicket) {
+        return car;
+    }
 }
