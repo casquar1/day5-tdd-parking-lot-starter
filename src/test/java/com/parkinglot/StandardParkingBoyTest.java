@@ -45,7 +45,7 @@ public class StandardParkingBoyTest {
     }
     
     @Test
-    void should_return_right_car_when_fetch_car_given_a_standard_parking_boy_two_parking_lots_both_with_parked_car_and_two_parking_ticket() {
+    void should_return_right_car_when_fetch_car_given_a_standard_parking_boy_two_parking_lots_both_with_parked_car_and_two_parking_tickets() {
     //given
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
