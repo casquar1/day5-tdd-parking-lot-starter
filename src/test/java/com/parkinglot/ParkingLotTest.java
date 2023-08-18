@@ -40,9 +40,9 @@ public class ParkingLotTest {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car firstCar = new Car();
-        Car secondCcar = new Car();
+        Car secondCar = new Car();
         ParkingTicket parkingTicket1 = parkingLot.park(firstCar);
-        ParkingTicket parkingTicket2 = parkingLot.park(secondCcar);
+        ParkingTicket parkingTicket2 = parkingLot.park(secondCar);
 
         //when
         Car fetchFirstCar = parkingLot.fetch(parkingTicket1);
@@ -50,7 +50,7 @@ public class ParkingLotTest {
 
         //then
         assertEquals(firstCar, fetchFirstCar);
-        assertEquals(secondCcar, fetchSecondCar);
+        assertEquals(secondCar, fetchSecondCar);
     }
 
     @Test
