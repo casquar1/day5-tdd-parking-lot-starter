@@ -39,4 +39,12 @@ public class ParkingLot {
         }
         return parkingTicketsAndCarsMap.remove(parkingTicket);
     }
+
+    public int getAvailableCapacity() {
+        return capacity - parkingTicketsAndCarsMap.size();
+    }
+
+    public boolean hasAvailableCapacity() {
+        return !isFull();
+    }
 }
