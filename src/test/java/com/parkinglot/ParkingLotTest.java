@@ -41,12 +41,12 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot();
         Car firstCar = new Car();
         Car secondCar = new Car();
-        ParkingTicket parkingTicket1 = parkingLot.park(firstCar);
-        ParkingTicket parkingTicket2 = parkingLot.park(secondCar);
+        ParkingTicket firstParkingTicket = parkingLot.park(firstCar);
+        ParkingTicket secondparkingTicket = parkingLot.park(secondCar);
 
         //when
-        Car fetchFirstCar = parkingLot.fetch(parkingTicket1);
-        Car fetchSecondCar = parkingLot.fetch(parkingTicket2);
+        Car fetchFirstCar = parkingLot.fetch(firstParkingTicket);
+        Car fetchSecondCar = parkingLot.fetch(secondparkingTicket);
 
         //then
         assertEquals(firstCar, fetchFirstCar);
