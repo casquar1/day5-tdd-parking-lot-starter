@@ -21,12 +21,16 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        if (parkingTicketsAndCarsMap.size() == capacity) {
+        if (isFull()) {
             throw new NoAvailablePositionException();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
         parkingTicketsAndCarsMap.put(parkingTicket, car);
         return parkingTicket;
+    }
+
+    public boolean isFull() {
+        return parkingTicketsAndCarsMap.size() == capacity;
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
