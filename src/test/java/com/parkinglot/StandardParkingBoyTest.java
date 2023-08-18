@@ -43,4 +43,25 @@ public class StandardParkingBoyTest {
         assertFalse(firstParkingLot.hasAvailableCapacity());
         assertTrue(secondParkingLot.hasAvailableCapacity());
     }
+    
+    @Test
+    void should_return_right_car_when_fetch_car_given_a_standard_parking_boy_two_parking_lots_both_with_parked_car_and_two_parking_ticket() {
+    //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        ParkingTicket firstParkingTicket = standardParkingBoy.park(firstCar);
+        ParkingTicket secondParkingTicket = standardParkingBoy.park(secondCar);
+     
+     //when
+        Car fetchFirstCar = standardParkingBoy.fetch(firstParkingTicket);
+        Car fetchSecondCar = standardParkingBoy.fetch(secondParkingTicket);
+     
+     //then
+        assertEquals(firstCar, fetchFirstCar);
+        assertEquals(secondCar, fetchSecondCar);
+    }
 }
