@@ -35,6 +35,7 @@ public class StandardParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
         StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
+        firstParkingLot.park(new Car());
         Car car = new Car();
      
      //when
@@ -42,8 +43,8 @@ public class StandardParkingBoyTest {
      
      //then
         assertNotNull(parkingTicket);
-        assertFalse(firstParkingLot.hasAvailableCapacity());
-        assertTrue(secondParkingLot.hasAvailableCapacity());
+        assertEquals(0, firstParkingLot.getAvailableCapacity());
+        assertEquals(9, secondParkingLot.getAvailableCapacity());
     }
     
     @Test
