@@ -15,7 +15,7 @@ public class SuperParkingBoy {
     public ParkingTicket park(Car car) {
         return parkingLots.stream()
                 .filter(ParkingLot::hasAvailableCapacity)
-                .findFirst()
+                .max(Comparator.comparingDouble(ParkingLot::getAvailablePositionRate))
                 .orElseThrow(NoAvailablePositionException::new)
                 .park(car);
     }
