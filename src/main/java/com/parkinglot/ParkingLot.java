@@ -33,6 +33,10 @@ public class ParkingLot {
         return parkingTicketsAndCarsMap.size() == capacity;
     }
 
+    public boolean hasParkedCars() {
+        return !parkingTicketsAndCarsMap.isEmpty();
+    }
+
     public Car fetch(ParkingTicket parkingTicket) {
         if (!parkingTicketsAndCarsMap.containsKey(parkingTicket)) {
             throw new UnrecognizedTicketException();
