@@ -55,12 +55,8 @@ public class SmartParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
-        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            cars.add(new Car());
-        }
-        for (Car car: cars) {
-            secondParkingLot.park(car);
+            secondParkingLot.park(new Car());
         }
         Car toParkCar = new Car();
 
@@ -80,12 +76,8 @@ public class SmartParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
-        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            cars.add(new Car());
-        }
-        for (Car car: cars) {
-            firstParkingLot.park(car);
+            firstParkingLot.park(new Car());
         }
         Car toParkCar = new Car();
 
@@ -105,13 +97,9 @@ public class SmartParkingBoyTest {
         ParkingLot secondParkingLot = new ParkingLot();
         List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
-        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-            cars.add(new Car());
-        }
-        for (Car car: cars) {
-            firstParkingLot.park(car);
-            secondParkingLot.park(car);
+            firstParkingLot.park(new Car());
+            secondParkingLot.park(new Car());
         }
         Car toParkCar = new Car();
 
