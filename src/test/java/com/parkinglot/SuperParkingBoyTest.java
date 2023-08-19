@@ -96,8 +96,6 @@ public class SuperParkingBoyTest {
         assertEquals(10, secondParkingLot.getAvailableCapacity());
     }
 
-
-
     @Test
     void should_park_to_first_parking_lot_when_park_given_a_super_parking_boy_and_two_parking_lots_having_equal_available_position_rate_and_a_car() {
         //given
@@ -181,5 +179,27 @@ public class SuperParkingBoyTest {
 
         //then
         assertEquals("Unrecognized parking ticket.", unrecognizedTicketException.getMessage());
+    }
+
+    @Test
+    void should_return_noAvailablePositionException_when_park_given_a_super_parking_boy_two_parking_lots_both_full() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
+        Car car = new Car();
+        Car firstParkedCar = new Car();
+        Car secondParkedCar = new Car();
+        superParkingBoy.park(firstParkedCar);
+        superParkingBoy.park(secondParkedCar);
+
+        //when
+        NoAvailablePositionException noAvailablePositionException = assertThrows(NoAvailablePositionException.class, () -> {
+            superParkingBoy.park(car);
+        });
+
+        //then
+        assertEquals("No available position.", noAvailablePositionException.getMessage());
     }
 }
