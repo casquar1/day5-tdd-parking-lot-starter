@@ -9,14 +9,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SuperParkingBoyTest {
-    
+    ParkingLot firstParkingLot = new ParkingLot();
+    ParkingLot secondParkingLot = new ParkingLot();
+    List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
+    SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
     @Test
     void should_park_to_first_parking_lot_when_park_given_a_super_parking_boy_and_two_parking_lots_and_a_car() {
         //given
-            ParkingLot firstParkingLot = new ParkingLot();
-            ParkingLot secondParkingLot = new ParkingLot();
-            List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-            SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
             Car car = new Car();
 
         //when
@@ -50,10 +49,6 @@ public class SuperParkingBoyTest {
     @Test
     void should_park_to_first_parking_lot_when_park_given_a_super_parking_boy_and_two_parking_lots_with_first_parking_lot_having_larger_available_position_rate_and_a_car() {
         //given
-            ParkingLot firstParkingLot = new ParkingLot();
-            ParkingLot secondParkingLot = new ParkingLot();
-            List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-            SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
             for (int i = 0; i < 3; i++) {
                 firstParkingLot.park(new Car());
             }
@@ -122,10 +117,6 @@ public class SuperParkingBoyTest {
     @Test
     void should_return_right_car_when_fetch_given_a_super_parking_boy_two_parking_lots_both_with_parked_car_and_two_parking_tickets() {
         //given
-            ParkingLot firstParkingLot = new ParkingLot();
-            ParkingLot secondParkingLot = new ParkingLot();
-            List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-            SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
             Car firstCar = new Car();
             Car secondCar = new Car();
             ParkingTicket firstParkingTicket = superParkingBoy.park(firstCar);
@@ -143,10 +134,6 @@ public class SuperParkingBoyTest {
     @Test
     void should_return_unrecognizedTicketException_when_fetch_given_a_super_parking_boy_two_parking_lots_and_an_unrecognized_ticket() {
         //given
-            ParkingLot firstParkingLot = new ParkingLot();
-            ParkingLot secondParkingLot = new ParkingLot();
-            List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-            SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
             Car car = new Car();
             superParkingBoy.park(car);
             ParkingTicket parkingTicket = new ParkingTicket();
@@ -163,10 +150,6 @@ public class SuperParkingBoyTest {
     @Test
     void should_return_unrecognizedTicketException_when_fetch_given_a_super_parking_boy_two_parking_lots_and_an_used_ticket() {
         //given
-            ParkingLot firstParkingLot = new ParkingLot();
-            ParkingLot secondParkingLot = new ParkingLot();
-            List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-            SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLots);
             Car car = new Car();
             ParkingTicket parkingTicket = superParkingBoy.park(car);
             superParkingBoy.fetch(parkingTicket);
