@@ -9,14 +9,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartParkingBoyTest {
-    
+    ParkingLot firstParkingLot = new ParkingLot();
+    ParkingLot secondParkingLot = new ParkingLot();
+    List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
     @Test
     void should_park_to_first_parking_lot_when_park_given_a_smart_parking_boy_and_two_parking_lots_and_a_car() {
     //given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         Car car = new Car();
      
      //when
@@ -50,10 +49,6 @@ public class SmartParkingBoyTest {
     @Test
     void should_park_to_first_parking_lot_when_park_given_a_smart_parking_boy_and_two_parking_lots_with_first_parking_lot_having_more_empty_positions_and_a_car() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         for (int i = 0; i < 3; i++) {
             secondParkingLot.park(new Car());
         }
@@ -71,10 +66,6 @@ public class SmartParkingBoyTest {
     @Test
     void should_park_to_second_parking_lot_when_park_given_a_smart_parking_boy_and_two_parking_lots_with_second_parking_lot_having_more_empty_positions_and_a_car() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         for (int i = 0; i < 5; i++) {
             firstParkingLot.park(new Car());
         }
@@ -92,18 +83,14 @@ public class SmartParkingBoyTest {
     @Test
     void should_park_to_first_parking_lot_when_park_given_a_smart_parking_boy_and_two_parking_lots_both_having_equal_empty_positions_and_a_car() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         for (int i = 0; i < 7; i++) {
             firstParkingLot.park(new Car());
             secondParkingLot.park(new Car());
         }
-        Car toParkCar = new Car();
+        Car car = new Car();
 
         //when
-        ParkingTicket parkingTicket = smartParkingBoy.park(toParkCar);
+        ParkingTicket parkingTicket = smartParkingBoy.park(car);
 
         //then
         assertNotNull(parkingTicket);
@@ -114,10 +101,6 @@ public class SmartParkingBoyTest {
     @Test
     void should_return_right_car_when_fetch_given_a_smart_parking_boy_two_parking_lots_both_with_parked_car_and_two_parking_tickets() {
     //given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
         ParkingTicket firstParkingTicket = smartParkingBoy.park(firstCar);
@@ -135,10 +118,6 @@ public class SmartParkingBoyTest {
     @Test
     void should_return_unrecognizedTicketException_when_fetch_given_a_smart_parking_boy_two_parking_lots_and_an_unrecognized_ticket() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         Car car = new Car();
         smartParkingBoy.park(car);
         ParkingTicket parkingTicket = new ParkingTicket();
@@ -155,10 +134,6 @@ public class SmartParkingBoyTest {
     @Test
     void should_return_unrecognizedTicketException_when_fetch_given_a_smart_parking_boy_two_parking_lots_and_a_used_ticket() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot();
-        ParkingLot secondParkingLot = new ParkingLot();
-        List<ParkingLot> parkingLots = List.of(firstParkingLot, secondParkingLot);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         Car car = new Car();
         ParkingTicket parkingTicket = smartParkingBoy.park(car);
         smartParkingBoy.fetch(parkingTicket);
