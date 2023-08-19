@@ -2,6 +2,7 @@ package com.parkinglot;
 
 import com.parkinglot.exception.NoAvailablePositionException;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class SmartParkingBoy {
@@ -14,7 +15,7 @@ public class SmartParkingBoy {
     public ParkingTicket park(Car car) {
         return parkingLots.stream()
                 .filter(ParkingLot::hasAvailableCapacity)
-                .findFirst()
+                .max(Comparator.comparingInt(ParkingLot::getAvailableCapacity))
                 .orElseThrow(NoAvailablePositionException::new)
                 .park(car);
     }
