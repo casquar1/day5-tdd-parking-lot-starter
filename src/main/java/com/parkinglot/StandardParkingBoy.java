@@ -22,6 +22,7 @@ public class StandardParkingBoy {
 
     public Car fetch(ParkingTicket parkingTicket) {
         return parkingLots.stream()
+                .filter(ParkingLot::hasParkedCars)
                 .findFirst()
                 .orElseThrow(UnrecognizedTicketException::new)
                 .fetch(parkingTicket);
