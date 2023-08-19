@@ -9,7 +9,6 @@ import java.util.Map;
 public class ParkingLot {
     private static final int DEFAULT_CAPACITY = 10;
     private final int capacity;
-    private Car car;
     private final Map<ParkingTicket, Car> parkingTicketsAndCarsMap = new HashMap<>();
 
     public ParkingLot(int capacity) {
